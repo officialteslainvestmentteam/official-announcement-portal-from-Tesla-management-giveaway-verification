@@ -3,71 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Official Management Portal</title>
+    <title>Official Announcement</title>
     <style>
-        body { background-color: #000; color: #fff; font-family: Arial, sans-serif; display: flex; justify-content: center; padding: 20px; line-height: 1.6; }
-        .card { background: #111; max-width: 500px; padding: 25px; border-radius: 15px; text-align: center; border: 1px solid #333; }
-        .car-img { width: 100%; border-radius: 10px; margin: 20px 0; }
-        .progress-bar { background: #333; border-radius: 20px; height: 25px; margin: 20px 0; overflow: hidden; display: none; }
-        #fill { height: 100%; width: 0%; background: #27ae60; line-height: 25px; font-size: 12px; transition: width 0.1s; }
-        .btn { color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 18px; cursor: pointer; text-decoration: none; display: inline-block; font-weight: bold; width: 80%; }
-        #claim { background: #e74c3c; }
-        .tg-btn { background: #0088cc; display: none; }
-        .announcement-box { text-align: left; background: #1a1a1a; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #0088cc; font-size: 14px; }
-        .highlight { color: #0088cc; font-weight: bold; }
-        h1 { margin-bottom: 5px; }
-        .sub-header { color: #888; margin-bottom: 20px; }
+        /* Base Setup */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        /* Container imitating the mobile application view */
+        .wrapper {
+            max-width: 440px;
+            width: 100%;
+            background-color: #121212;
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Top Branding & Headers */
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .registry-info {
+            color: #888888;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            color: #1a8cd8;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        /* Card Block Element with Blue Left Border Accent */
+        .card {
+            background-color: #1c1c1e;
+            border-left: 4px solid #1a8cd8;
+            border-radius: 4px 12px 12px 4px;
+            padding: 22px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .card p {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: #e1e1e1;
+            margin-bottom: 16px;
+        }
+
+        .card p strong {
+            color: #ffffff;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: #e1e1e1;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .card li::before {
+            content: "•";
+            color: #1a8cd8;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+            top: -2px;
+        }
+
+        /* Showcase Image Component */
+        .showcase-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 5px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .footer-text {
+            font-size: 14.5px;
+            line-height: 1.5;
+            color: #bbbbbb;
+            margin-bottom: 25px;
+            padding: 0 5px;
+        }
+
+        /* Dynamic State Button Interface */
+        .action-btn {
+            display: inline-block;
+            width: 100%;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        /* State 1 Style: Initial Green State */
+        .btn-green {
+            background-color: #2ea44f;
+        }
+        .btn-green:hover {
+            background-color: #2c974b;
+        }
+
+        /* State 2 Style: Processing State */
+        .btn-loading {
+            background-color: #555555;
+            cursor: not-allowed;
+        }
+
+        /* State 3 Style: Final Blue State */
+        .btn-blue {
+            background-color: #0084d6;
+        }
+        .btn-blue:hover {
+            background-color: #0073b8;
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>CONGRATULATIONS BARBARA! 🎈</h1>
-        <p class="sub-header">Portland | +1 503-341-8090</p>
-        
-        <p class="highlight">UPDATED ANNOUNCEMENT FROM THE LEADERSHIP TEAM</p>
 
-        <div class="announcement-box">
+    <div class="wrapper">
+        <!-- Main Headers displaying Lurleen's original details -->
+        <h1>CONGRATULATIONS Lurleen Tate-Smith ! 🎈</h1>
+        <div class="registry-info">
+            1(412) 969-0395 &nbsp;|&nbsp; lurleentate@gmail.com
+        </div>
+        
+        <div class="section-title">UPDATED ANNOUNCEMENT FROM THE LEADERSHIP TEAM</div>
+
+        <!-- Document Content Body -->
+        <div class="card">
             <p><strong>This is the Tesla Management Team, in coordination with the leadership families at SpaceX and xAI.</strong></p>
-            <p>I am thrilled to personally inform you that your name was randomly selected from the comments on my X post and page! You have officially won a grand prize of <strong>$50,000.00</strong> and a brand-new, latest-model Tesla.</p>
+            <p>We are thrilled to personally inform you that your name has been randomly selected to be part of our official giveaway promotion! You have officially won a grand prize of <strong>$50,000.00</strong> and a brand-new, latest-model Tesla.</p>
             <p>This recognition comes with the full support of our executive families:</p>
-            <ul style="padding-left: 20px;">
+            <ul>
                 <li><strong>From Tesla:</strong> Myself, CFO Vaibhav Taneja, and our engineering leads Lars Moravy and Ashok Elluswamy.</li>
                 <li><strong>From SpaceX:</strong> President & COO Gwynne Shotwell and the entire Starlink and launch teams.</li>
                 <li><strong>From xAI:</strong> Our research lead Igor Babuschkin and the Grok development team.</li>
             </ul>
             <p>Your presence and engagement in our community haven’t gone unnoticed. Keep up the incredible work; it’s people like you who help drive the future forward.</p>
-            <p>Kindly respond with <strong>ACCEPT</strong> to proceed with the details on how to claim your winnings from our logistics team. Congratulations once again!</p>
+            <p><strong>Kindly click on the button claim to claim your package and winning.</strong></p>
         </div>
 
-        <img src="IMG_0982.jpeg" alt="Tesla Grand Prize" class="car-img">
+        <!-- Vehicle Media Asset Display (Points to your uploaded repository file) -->
+        <img class="showcase-image" src="car.png" alt="Tesla Vehicle Presentation">
 
-        <p>The Tesla Management Team, SpaceX, and xAI families congratulate you on your $50,000.00 and new Tesla win!</p>
-        
-        <button id="claim" class="btn" onclick="start()">Claim My Package 📦</button>
-        
-        <div id="p-bar" class="progress-bar"><div id="fill">0%</div></div>
-        
-        <a id="tg-link" href="https://t.me/Tesla_SpaceX_and_xAI_management" class="btn tg-btn">Get Packages 📦</a>
+        <p class="footer-text">The Tesla Management Team, SpaceX, and xAI families congratulate you on your $50,000.00 and new Tesla win!</p>
+
+        <!-- Interactive State Controller Button Target -->
+        <button id="stateButton" class="action-btn btn-green">Claim Package</button>
     </div>
 
+    <!-- JavaScript Interactive Logic Layer -->
     <script>
-        function start() {
-            document.getElementById('claim').style.display = 'none';
-            document.getElementById('p-bar').style.display = 'block';
-            let fill = document.getElementById('fill');
-            let w = 0;
-            let iv = setInterval(() => {
-                if (w >= 100) {
-                    clearInterval(iv);
-                    document.getElementById('p-bar').style.display = 'none';
-                    document.getElementById('tg-link').style.display = 'inline-block';
-                } else {
-                    w++;
-                    fill.style.width = w + '%';
-                    fill.innerText = w + '%';
-                }
-            }, 40);
-        }
+        const button = document.getElementById('stateButton');
+        let currentState = 'initial'; // Track button sequence phase
+
+        button.addEventListener('click', function(e) {
+            if (currentState === 'initial') {
+                // Advance to Processing State (Simulated 1% to 100% Loading Engine)
+                currentState = 'loading';
+                button.className = 'action-btn btn-loading';
+                let progress = 0;
+                
+                const interval = setInterval(() => {
+                    progress += 4; // Step increments
+                    if (progress <= 100) {
+                        button.innerText = `Processing... ${progress}%`;
+                    } else {
+                        clearInterval(interval);
+                        // Trigger final structural mutation to Blue State
+                        currentState = 'final';
+                        button.className = 'action-btn btn-blue';
+                        button.innerText = 'Get Packages 📦';
+                    }
+                }, 80); // Processing speed adjustment matrix
+                
+            } else if (currentState === 'final') {
+                // Route target execution out to YOUR WhatsApp number safely hidden in code logic
+                window.location.href = "https://wa.me/17793746562";
+            }
+        });
     </script>
+
 </body>
 </html>
